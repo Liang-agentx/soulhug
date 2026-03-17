@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+packages/*/node_modules/
+
+# Build outputs
+dist/
+*.tsbuildinfo
+
+# Development files
+.git/
+.gitignore
+*.md
+!README.md
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Environment (will be mounted as volume)
+# .env - commented out because we mount it
+
+# AgentX data (will be mounted as volume)
+# .agentx - commented out because we mount it

@@ -1,0 +1,50 @@
+{
+  "name": "soulhug",
+  "version": "0.2.0",
+  "description": "SoulHug - 心灵拥抱情感陪伴智能体，帮助青少年理解父母视角",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:server": "tsx --watch src/server.ts",
+    "dev:full": "concurrently \"pnpm dev:server\" \"pnpm dev\"",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@agentxjs/runtime": "^1.4.0",
+    "@soulhug/ui": "workspace:*",
+    "agentxjs": "^1.4.0",
+    "framer-motion": "^12.23.26",
+    "lucide-react": "^0.460.0",
+    "pixi-live2d-display": "^0.4.0",
+    "pixi.js": "~6.5.10",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zod": "^4.2.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/node": "^22.10.2",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.23",
+    "concurrently": "^9.1.0",
+    "dotenv": "^16.6.1",
+    "tailwindcss": "^4.1.17",
+    "tsx": "^4.19.2",
+    "typescript": "^5.9.3",
+    "vite": "^6.0.5",
+    "ws": "^8.18.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "better-sqlite3": "11.10.0"
+    },
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "better-sqlite3": "11.10.0"
+      }
+    }
+  }
+}

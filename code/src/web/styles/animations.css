@@ -1,0 +1,256 @@
+/**
+ * SoulHug 动画定义
+ *
+ * 所有动画使用 CSS @keyframes，零依赖
+ * 遵循性能原则：只使用 transform 和 opacity
+ */
+
+/* ============================================================================
+   基础动画
+   ============================================================================ */
+
+/* 淡入 */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 淡出 */
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* 向上滑入 */
+@keyframes slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 向下滑入 */
+@keyframes slide-down {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ============================================================================
+   角色切换动画
+   ============================================================================ */
+
+/* 角色变形：缩小 → 消失 → 出现 → 放大 */
+@keyframes role-morph {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  40% {
+    transform: scale(0.3) rotate(-10deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(0.3) rotate(10deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* 光晕脉动 */
+@keyframes glow-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* ============================================================================
+   粒子动画
+   ============================================================================ */
+
+/* 漂浮粒子 */
+@keyframes float-particle {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* 呼吸效果 */
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* ============================================================================
+   心理活动气泡动画
+   ============================================================================ */
+
+/* 气泡展开 */
+@keyframes bubble-expand {
+  from {
+    transform: scaleY(0);
+    transform-origin: top;
+    opacity: 0;
+  }
+  to {
+    transform: scaleY(1);
+    transform-origin: top;
+    opacity: 1;
+  }
+}
+
+/* 思绪浮现 */
+@keyframes thought-appear {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* ============================================================================
+   复制反馈动画
+   ============================================================================ */
+
+/* 复制成功打勾 */
+@keyframes copy-success {
+  0% {
+    transform: scale(0) rotate(-45deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(0deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* ============================================================================
+   工具类
+   ============================================================================ */
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+.animate-fade-out {
+  animation: fade-out 0.3s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out forwards;
+}
+
+.animate-slide-down {
+  animation: slide-down 0.3s ease-out forwards;
+}
+
+.animate-role-morph {
+  animation: role-morph 0.8s ease-in-out forwards;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.animate-float-particle {
+  animation: float-particle 3s ease-out forwards;
+}
+
+.animate-breathe {
+  animation: breathe 3s ease-in-out infinite;
+}
+
+.animate-bubble-expand {
+  animation: bubble-expand 0.3s ease-out forwards;
+}
+
+.animate-thought-appear {
+  animation: thought-appear 0.4s ease-out forwards;
+}
+
+.animate-copy-success {
+  animation: copy-success 0.4s ease-out forwards;
+}
+
+/* 延迟变体 */
+.animate-fade-in-delay {
+  animation: fade-in 0.3s ease-out 0.5s forwards;
+  opacity: 0;
+}
+
+.animate-slide-up-delay {
+  animation: slide-up 0.3s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+/* ============================================================================
+   过渡工具类
+   ============================================================================ */
+
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-bounce {
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ============================================================================
+   减少动画偏好支持
+   ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

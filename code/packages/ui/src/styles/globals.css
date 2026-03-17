@@ -1,0 +1,215 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* ===== SoulHug 心灵拥抱 主题 ===== */
+    /* 温暖、治愈、粉紫色系 */
+
+    /* Backgrounds - 柔和温暖的背景 */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 20%;
+
+    /* Card & Popover - 轻柔的卡片 */
+    --card: 330 30% 98%;
+    --card-foreground: 240 10% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 20%;
+
+    /* Primary - 温暖的粉紫色 (主色调) */
+    --primary: 320 60% 55%; /* 粉紫色 */
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - 柔和的紫色 */
+    --secondary: 280 50% 60%; /* 紫色 */
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted - 柔和的粉色背景 */
+    --muted: 330 30% 96%;
+    --muted-foreground: 240 10% 45%;
+
+    /* Accent - 温暖的珊瑚色 */
+    --accent: 350 70% 65%; /* 珊瑚粉 */
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive - 柔和的红色 */
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders & Inputs - 淡粉色边框 */
+    --border: 330 20% 90%;
+    --input: 330 20% 90%;
+    --ring: 320 60% 55%;
+
+    /* Border radius - 更圆润的边角 */
+    --radius: 0.75rem; /* 12px - 更温柔的圆角 */
+
+    /* Success - 治愈的绿色 */
+    --success: 160 60% 45%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning - 温暖的橙色 */
+    --warning: 35 85% 55%;
+    --warning-foreground: 240 10% 20%;
+
+    /* Info - 平静的蓝色 */
+    --info: 200 70% 50%;
+    --info-foreground: 0 0% 100%;
+
+    /* ===== SoulHug 特有变量 ===== */
+    --soulhug-gradient-start: 330 70% 95%; /* 渐变起点 - 淡粉 */
+    --soulhug-gradient-end: 270 60% 95%;   /* 渐变终点 - 淡紫 */
+    --soulhug-hug: 320 60% 55%;            /* 拥抱色 - 主色 */
+    --soulhug-heart: 350 70% 60%;          /* 心形色 - 珊瑚粉 */
+    --soulhug-calm: 200 50% 60%;           /* 平静色 - 淡蓝 */
+  }
+
+  .dark {
+    /* ===== SoulHug 暗色主题 ===== */
+    /* 深邃但温暖的夜间模式 */
+
+    /* Backgrounds - 深紫色背景 */
+    --background: 270 30% 12%;
+    --foreground: 330 20% 95%;
+
+    /* Card & Popover */
+    --card: 270 25% 18%;
+    --card-foreground: 330 20% 95%;
+    --popover: 270 30% 12%;
+    --popover-foreground: 330 20% 95%;
+
+    /* Primary - 明亮的粉色 */
+    --primary: 320 65% 65%;
+    --primary-foreground: 270 30% 12%;
+
+    /* Secondary - 柔和的紫色 */
+    --secondary: 280 55% 65%;
+    --secondary-foreground: 270 30% 12%;
+
+    /* Muted */
+    --muted: 270 25% 20%;
+    --muted-foreground: 330 15% 65%;
+
+    /* Accent - 温暖的珊瑚色 */
+    --accent: 350 65% 60%;
+    --accent-foreground: 270 30% 12%;
+
+    /* Destructive */
+    --destructive: 0 60% 55%;
+    --destructive-foreground: 330 20% 95%;
+
+    /* Borders & Inputs */
+    --border: 270 20% 25%;
+    --input: 270 20% 25%;
+    --ring: 320 65% 65%;
+
+    /* Success */
+    --success: 160 55% 50%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning */
+    --warning: 35 80% 60%;
+    --warning-foreground: 270 30% 12%;
+
+    /* Info */
+    --info: 200 65% 55%;
+    --info-foreground: 270 30% 12%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+  }
+}
+
+/* SoulHug 自定义动画 */
+@layer utilities {
+  .soulhug-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--soulhug-gradient-start)) 0%,
+      hsl(var(--soulhug-gradient-end)) 100%
+    );
+  }
+
+  .soulhug-text-gradient {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--primary)) 0%,
+      hsl(var(--secondary)) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .soulhug-glow {
+    box-shadow: 0 0 20px hsla(var(--primary), 0.3);
+  }
+
+  .soulhug-pulse {
+    animation: soulhug-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes soulhug-pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+
+  /* ===== SoulHug Unique Visuals ===== */
+  
+  /* 1. 动态极光背景 (Breathing Aurora) */
+  .soulhug-aurora-bg {
+    background: 
+      radial-gradient(at 0% 0%, hsla(var(--primary), 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, hsla(var(--soulhug-calm), 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, hsla(var(--soulhug-heart), 0.15) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsla(var(--secondary), 0.15) 0px, transparent 50%);
+    background-size: 200% 200%;
+    animation: aurora-shift 15s ease-in-out infinite alternate;
+  }
+
+  @keyframes aurora-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 50% 100%; }
+  }
+
+  /* 2. 磨砂玻璃质感 (Frosted Glass) */
+  .glass-panel {
+    background: hsla(var(--card), 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsla(var(--foreground), 0.05);
+  }
+
+  /* 4. 树洞模式 - 烦恼飞走动画 (Worry Fly Away) */
+  @keyframes worry-fly-away {
+    0% {
+      transform: scale(1) translate(0, 0);
+      opacity: 1;
+    }
+    40% {
+      transform: scale(0.1) rotate(15deg) translate(20px, -20px);
+      opacity: 0.8;
+      filter: blur(2px);
+    }
+    100% {
+      transform: scale(0) rotate(45deg) translate(200px, -500px);
+      opacity: 0;
+    }
+  }
+
+  .animate-worry-fly-away {
+    animation: worry-fly-away 0.8s ease-in-out forwards;
+  }
+}

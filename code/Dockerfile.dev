@@ -1,0 +1,29 @@
+# SoulHug Agent Development Dockerfile
+# Purpose: Development environment with hot reload
+
+FROM node:20-alpine
+
+# Install pnpm via npm (more reliable than corepack)
+RUN npm install -g pnpm@9
+
+WORKDIR /app
+
+# Copy only package files first
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY packages/ui/package.json ./packages/ui/
+
+# Install all dependencies (including devDependencies)
+RUN pnpm install --frozen-lockfile
+
+# Copy source code
+COPY . .
+
+# Expose ports
+EXPOSE 5800 5173
+
+# Environment variables
+ENV NODE_ENV=development
+ENV PORT=5800
+
+# Start development server
+CMD ["pnpm", "dev:full"]

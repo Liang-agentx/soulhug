@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  soulhug:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5800:5800"
+      - "8080:80"
+    environment:
+      - NODE_ENV=production
+      - PORT=5800
+      - HTTP_PORT=80
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - ANTHROPIC_BASE_URL=${ANTHROPIC_BASE_URL}
+      - ANTHROPIC_MODEL=${ANTHROPIC_MODEL:-claude-sonnet-4-5-20250929}
+    volumes:
+      # Mount .env file for API keys
+      - ./.env:/app/.env:ro
+      # Persist agentx data
+      - ./.agentx:/app/.agentx
+    restart: unless-stopped
+
+  # Development version with hot reload
+  soulhug-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5801:5800"
+      - "5174:5173"
+    environment:
+      - NODE_ENV=development
+      - PORT=5800
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - ANTHROPIC_BASE_URL=${ANTHROPIC_BASE_URL}
+      - ANTHROPIC_MODEL=${ANTHROPIC_MODEL:-claude-sonnet-4-5-20250929}
+    volumes:
+      - ./.env:/app/.env:ro
+      - ./.agentx:/app/.agentx
+    profiles:
+      - dev
